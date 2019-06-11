@@ -1,24 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import {
   Button,
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment
 } from "semantic-ui-react";
+import HomeContainer from "./containers/index";
 
 function App() {
   return (
     <div className="App">
-      <Grid
-        textAlign="center"
-        style={{ height: "100vh" }}
-        verticalAlign="middle"
-      >
+      <HomeContainer>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
             {/* <Image src="/logo.png" /> Log-in to your account */}
@@ -29,14 +24,19 @@ function App() {
                 fluid
                 icon="user"
                 iconPosition="left"
-                placeholder="E-mail address"
+                placeholder="Postcode e.g EH48 2GG"
+              />
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="House number, street, sublocality"
               />
               <Form.Input
                 fluid
                 icon="lock"
                 iconPosition="left"
-                placeholder="Password"
-                type="password"
+                placeholder="City"
               />
 
               <Button color="teal" fluid size="large">
@@ -48,7 +48,7 @@ function App() {
             New to us? <a href="#">Sign Up</a>
           </Message>
         </Grid.Column>
-      </Grid>
+      </HomeContainer>
     </div>
   );
 }
