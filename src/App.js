@@ -40,13 +40,10 @@ function App() {
               />
 
               <Button color="teal" fluid size="large">
-                Login
+                Search
               </Button>
             </Segment>
           </Form>
-          <Message>
-            New to us? <a href="#">Sign Up</a>
-          </Message>
         </Grid.Column>
       </HomeContainer>
     </div>
