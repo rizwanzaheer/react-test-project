@@ -19,20 +19,45 @@ class FormComponent extends Component {
     const trimValue = value.trim();
     const validRegex = /^[A-Z][A-Z]?[0-9][0-9]?\s*[0-9][A-Z][A-Z]$/;
     console.log("validate regex is: ", validRegex.test(trimValue));
-    if (trimValue)
+    if (trimValue && validRegex.test(trimValue)) {
       Api.get(trimValue)
         .then(apiData => {
           console.log("api data is: ", apiData.data);
-          this.setState({ apiResponseData: apiData.data.items }, () => {
-            console.log("set state data is: ", this.state.apiResponseData);
-          });
+          if (apiData.data.items.length > 0) {
+            this.setState(
+              {
+                apiResponseData: apiData.data.items,
+                city: apiData.data.items[0].city,
+                street: apiData.data.items[0].street
+              },
+              () => {
+                console.log("set state data is: ", this.state.apiResponseData);
+              }
+            );
+          }
+          //  else {
+          //   alert("No record found!");
+          // }
         })
         .catch(e => {
           console.log("catch error: ", e);
           throw new Error(e);
         });
+    } else {
+      this.setState(
+        {
+          apiResponseData: [],
+          city: "",
+          street: ""
+        },
+        () => {
+          console.log("set state data is: ", this.state.apiResponseData);
+        }
+      );
+    }
   }
   render() {
+    const { city, street } = this.state;
     return (
       <Form size="large">
         <Segment stacked>
@@ -47,6 +72,7 @@ class FormComponent extends Component {
             fluid
             icon="user"
             iconPosition="left"
+            value={street}
             placeholder="House number, street, sublocality"
           />
           <Form.Input
@@ -54,6 +80,7 @@ class FormComponent extends Component {
             icon="lock"
             iconPosition="left"
             placeholder="City"
+            value={city}
           />
         </Segment>
       </Form>
