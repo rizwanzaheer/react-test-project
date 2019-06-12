@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "../App.css";
 import { Grid } from "semantic-ui-react";
+import Home from "./home";
 
-class HomeContainer extends Component {
+class RootContainer extends Component {
   render() {
     return (
       <Grid textAlign="center" style={styles} verticalAlign="middle">
-        {this.props.children}
+        <Home />
       </Grid>
     );
   }
@@ -14,4 +15,4 @@ class HomeContainer extends Component {
 
 const styles = { height: "100vh" };
 
-export default HomeContainer;
+export default RootContainer;
