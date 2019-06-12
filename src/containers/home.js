@@ -6,7 +6,9 @@ class Home extends Component {
   render() {
     return (
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center" />
+        <Header as="h2" color="teal" textAlign="center">
+          Postcode Lookup Widget
+        </Header>
         <Form />
       </Grid.Column>
     );
