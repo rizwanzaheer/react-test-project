@@ -13,6 +13,6 @@ class RootContainer extends Component {
   }
 }
 
-const styles = { height: "100vh" };
+const styles = { height: "90vh" };
 
 export default RootContainer;
